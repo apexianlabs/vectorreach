@@ -8,7 +8,7 @@ export function middleware(request) {
     return NextResponse.next()
   }
 
-  if (hostname === 'app.vectorreach.io') {
+  if (hostname === 'app.vectorreach.app') {
     if (pathname === '/') {
       const token = request.cookies.get('vec_token')?.value
       if (token) {
@@ -20,11 +20,11 @@ export function middleware(request) {
     return NextResponse.next()
   }
 
-  if (hostname === 'vectorreach.io' || hostname === 'www.vectorreach.io') {
+  if (hostname === 'vectorreach.app' || hostname === 'www.vectorreach.app') {
     if (pathname.startsWith('/dashboard') || pathname.startsWith('/billing') ||
         pathname.startsWith('/generate') || pathname.startsWith('/login') ||
         pathname.startsWith('/signup')) {
-      return NextResponse.redirect(new URL('https://app.vectorreach.io' + pathname, request.url))
+      return NextResponse.redirect(new URL('https://app.vectorreach.app' + pathname, request.url))
     }
   }
 

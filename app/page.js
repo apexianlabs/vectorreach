@@ -35,10 +35,10 @@ export default function HomePage() {
           ✦ AI-Powered · Built for Professionals
         </div>
         <h1 style={{fontSize:'clamp(36px,5.5vw,64px)',fontWeight:900,lineHeight:1.05,letterSpacing:'-2px',marginBottom:20,maxWidth:760,margin:'0 auto 20px',color:'#0f172a'}}>
-          Cold outreach that actually converts
+          Cold outreach that actually gets replies.
         </h1>
         <p style={{fontSize:'clamp(16px,2vw,19px)',color:'#64748b',maxWidth:520,margin:'0 auto 36px',lineHeight:1.65,fontWeight:400}}>
-          Cold outreach that actually converts
+          Fill in the prospect details and get a personalised, research-backed cold outreach message instantly.
         </p>
         <div style={{display:'flex',gap:12,justifyContent:'center',flexWrap:'wrap',marginBottom:20}}>
           <Link href="/generate" style={{padding:'14px 28px',background:'#059669',color:'#fff',textDecoration:'none',borderRadius:10,fontWeight:700,fontSize:15,letterSpacing:'-0.2px',boxShadow:'0 4px 14px rgba(0,0,0,0.15)'}}>

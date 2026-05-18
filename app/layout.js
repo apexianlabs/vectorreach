@@ -1,6 +1,6 @@
 export const metadata = {
-  title: 'VectorReach — Cold outreach that actually converts',
-  description: 'Cold outreach that actually converts',
+  title: 'VectorReach — Fill in the prospect details and get a personalised, research-backed cold outreach message instantly.',
+  description: 'Fill in the prospect details and get a personalised, research-backed cold outreach message instantly.',
 }
 export default function RootLayout({ children }) {
   return (

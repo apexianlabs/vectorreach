@@ -14,8 +14,14 @@ export async function POST(request) {
       .split('/')[0]
       .trim()
 
+    // Split name into first/last
+    const nameParts = prospect_name.trim().split(' ')
+    const first_name = nameParts[0]
+    const last_name = nameParts.slice(1).join(' ')
+
     const params = new URLSearchParams({
-      name: prospect_name,
+      first_name,
+      ...(last_name && { last_name }),
       employer_website: domain.includes('.') ? domain : `${domain}.com`
     })
 
@@ -27,13 +33,17 @@ export async function POST(request) {
     if (!res.ok) return NextResponse.json({ enriched: false })
     const data = await res.json()
 
+    const currentJob = data.work_experience?.find(w => w.is_current) || data.work_experience?.[0]
+
     return NextResponse.json({
       enriched: true,
       name: data.full_name || prospect_name,
-      role: data.current_role || data.headline || '',
-      company: data.current_employer || prospect_company,
-      summary: data.summary?.slice(0, 400) || '',
-      skills: data.skills?.slice(0, 8) || [],
+      role: currentJob?.role || '',
+      company: currentJob?.company_name || prospect_company,
+      location: data.location_display || '',
+      bio: data.bio || '',
+      follower_count: data.follower_count || 0,
+      personal_website: data.personal_website || '',
     })
   } catch(err) {
     return NextResponse.json({ enriched: false })

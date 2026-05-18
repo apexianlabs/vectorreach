@@ -9,7 +9,7 @@ export default function GeneratePage() {
   const [loading, setLoading] = useState(false)
   const [error, setError]     = useState('')
   const [result, setResult]   = useState(null)
-  const [form, setForm]       = useState({ sender_name:'', sender_role:'', prospect_name:'', prospect_company:'', prospect_role:'', linkedin_info:'', offering:'', goal:'Book a call', tone:'Professional' })
+  const [form, setForm]       = useState({ sender_name:'', sender_role:'', prospect_name:'', prospect_company:'', prospect_role:'', linkedin_url:'', linkedin_info:'', offering:'', goal:'Book a call', tone:'Professional' })
 
   useEffect(() => {
     try {
@@ -135,10 +135,24 @@ export default function GeneratePage() {
               </select>
             </div>
           </div>
+          <div style={{marginBottom:14}}>
+            <label style={labelStyle}>LinkedIn URL (optional)</label>
+            <div style={{position:'relative'}}>
+              <input value={form.linkedin_url} onChange={e => setForm({...form,linkedin_url:e.target.value})}
+                placeholder="https://linkedin.com/in/prospect-name"
+                style={inputStyle}/>
+            </div>
+            <div style={{marginTop:8,background:'#f0fdf4',border:'1px solid #bbf7d0',borderRadius:6,padding:'8px 12px',display:'flex',gap:8,alignItems:'flex-start'}}>
+              <span style={{fontSize:12,flexShrink:0}}>🔗</span>
+              <p style={{fontSize:11,color:'#15803d',lineHeight:1.5}}>
+                <strong>Auto-scraping coming soon.</strong> Paste their URL and we'll automatically pull their profile, recent posts, and job history. For now, paste key context below.
+              </p>
+            </div>
+          </div>
           <div style={{marginBottom:24}}>
-            <label style={labelStyle}>LinkedIn info / context (optional)</label>
+            <label style={labelStyle}>LinkedIn context (paste manually for now)</label>
             <textarea value={form.linkedin_info} onChange={e => setForm({...form,linkedin_info:e.target.value})}
-              placeholder="Paste anything relevant from their LinkedIn — recent posts, job changes, shared connections..."
+              placeholder="Paste anything relevant from their LinkedIn — recent posts, job changes, shared connections, company news..."
               rows={3} style={{...inputStyle,resize:'vertical'}}/>
           </div>
           <button onClick={handleSubmit} disabled={loading}

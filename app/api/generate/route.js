@@ -31,8 +31,9 @@ export async function POST(request) {
           body: JSON.stringify({ user_id: userId, title: `To ${prospect_name} at ${prospect_company || "?"}`, prospect_name, prospect_company, result_data: result, status: 'complete' })
         })
         const dbData = await dbRes.json()
+        console.error('DB response:', JSON.stringify(dbData))
         itemId = dbData.data?.id || null
-      } catch(e) { console.error('DB save failed:', e.message) }
+      } catch(e) { console.error('DB save failed:', e.message, e.response?.data) }
     }
 
     return NextResponse.json({ itemId, result })
